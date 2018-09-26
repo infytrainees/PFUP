@@ -1,0 +1,15 @@
+def check_registration_number(reg_number):
+    temp=reg_number
+    result_sum=0
+    flag=True
+    while(temp>0):
+            rem=temp%10
+            result_sum+=rem
+            temp=temp//10
+            result=result_sum
+    if (result>9):
+        return check_registration_number(result)
+    else:
+        return result
+     
+print(check_registration_number(2592586))

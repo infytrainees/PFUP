@@ -1,0 +1,15 @@
+#PF-Exer-7
+
+def calculate_total_ticket_cost(no_of_adults, no_of_children):
+    total_ticket_cost=0
+    #Write your logic here
+    cost = 37550.0
+    actual_price=(cost*no_of_adults)+((cost/3)*no_of_children)
+    service_tax = (7*actual_price/100)+actual_price
+    total_ticket_cost = service_tax-(service_tax/10)
+    return total_ticket_cost
+
+
+#Provide different values for no_of_adults, no_of_children and test your program
+total_ticket_cost=calculate_total_ticket_cost(5,2)
+print("Total Ticket Cost:",total_ticket_cost)

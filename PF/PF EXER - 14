@@ -1,0 +1,17 @@
+#PF-Tryout
+#Start writing your code here
+import sys
+score = 79
+grade = ""
+if (80 <= score <= 100):
+    grade = "A"
+elif (73 <= score <= 79):
+    grade = "B"
+elif (65 <= score <= 72):
+    grade = "C"
+elif (0 <= score <= 71):
+    grade = "D"
+else:
+    grade = "Z"
+    
+print (grade)
