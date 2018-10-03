@@ -63,8 +63,8 @@ def main():
     
     global input_attr
     global input_fun
-    global cls
-    
+    #global cls
+    cls=input("Enter Name of Class:\n")
     print("Enter Attributes:\n")
     while input_attr[-1]!='#':
         input_attr.append(input())
@@ -82,7 +82,10 @@ def main():
     funtions(input_fun,input_attr)
      
 
-cls=input("Enter Name of Class:\n")
+cls=input("Enter Name of File Name:\n")
 filename=cls+'.txt'
 file=open(filename,'a')
-main()
+n=input("Enter No. of Classes:\n")
+for x in range (0,int(n)):
+    main()
+
