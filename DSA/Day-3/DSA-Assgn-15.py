@@ -22,11 +22,14 @@ class Job:
 
 
     def __str__(self):
-        pass
+        return self.__name+'  '+str(self.__time_needed)
+        
     def elapsed_time(self,no_of_mins):
         self.__time_elapsed += no_of_mins
-        if self.__time_elapsed == self.__time_needed:
+        
+        if self.__time_elapsed >= self.__time_needed:
             return True
+        
         return False
     
 class Employee:
@@ -48,13 +51,20 @@ class Employee:
 
     def elapsed_time(self,no_of_mins):
         self.__allocated_job.elapsed_time(no_of_mins)
-        pass
+        
+        if self.__allocated_job.get_time_needed() <= self.__allocated_job.get_time_elapsed():
+            ret = self.__allocated_job
+            self.__allocated_job = None
+            return ret
+        
+        else:
+            return None
    
 
 class Company:
     def __init__(self,emp_list): 
         self.__employees = emp_list
-        self.__pending_jobs = None
+        self.__pending_jobs = Queue(10)
 
     def get_employees(self):
         return self.__employees
@@ -64,12 +74,39 @@ class Company:
         return self.__pending_jobs
 
         
-
     def allocate_new_job(self,job):
+        in_job=0
+        
+        for employee in self.__employees:
+            
+            if employee.get_allocated_job() is None:
+                employee.set_allocated_job(job)
+                break
+            
+            else:
+                in_job+=1
+            
+            if in_job == len(self.__employees):
+                self.__pending_jobs.enqueue(job)
+            
+        
         pass 
     def elapsed_time(self,no_of_mins):
-        pass    
-    
+        completed_list = []
+        
+        for employe in self.__employees:
+            job_status = employe.elapsed_time(no_of_mins)
+            
+            if employe.get_allocated_job() is None:
+                self.allocate_new_job(self.get_pending_jobs().dequeue())
+            
+            if job_status is not None:
+                completed_list.append(job_status)
+        
+        if len(completed_list)!=0:
+            return completed_list
+        else:
+            return None
 
 #Implement Job, Employee and Company classes here
 
