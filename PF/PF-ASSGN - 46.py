@@ -6,7 +6,5 @@ def nearest_palindrome(number):
         number +=1
         num_string = str(number)
     return number
-         
-    #start writitng your code here
 number=121
 print(nearest_palindrome(number))
