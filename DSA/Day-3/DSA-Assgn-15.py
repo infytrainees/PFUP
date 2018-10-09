@@ -1,7 +1,6 @@
 #DSA-Assgn-15
 
 #This assignment needs DataStructures.py file in your package, you can get it from resources page
-
 from res.DataStructures import Queue
 class Job:
     def __init__(self,name,time_needed):
